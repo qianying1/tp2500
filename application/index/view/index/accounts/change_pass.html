@@ -1,0 +1,44 @@
+{include file="public/header"}
+{include file="public/menu"}
+<div class="container-fluid">
+    <div class="side-body padding-top">
+
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="title">修改密码</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form action="{:url('Index/changePass')}" method="post">
+                                <div class="sub-title">旧密码</div>
+                                <div>
+                                    <input type="text" name="old_pass" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">新密码</div>
+                                <div>
+                                    <input type="text" name="new_pass" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">再次输入新密码</div>
+                                <div>
+                                    <input type="text" name="re_new_pass" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title"></div>
+                                <div>
+                                    <button type="submit" class="btn btn-info">确认</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+
+    </div>
+</div>
+{include file="public/footer"}

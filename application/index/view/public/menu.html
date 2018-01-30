@@ -1,0 +1,104 @@
+<div class="side-menu sidebar-inverse">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="side-menu-container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <div class="icon fa fa-paper-plane"></div>
+                    <div class="title">后台管理中心</div>
+                </a>
+                <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                    <i class="fa fa-times icon"></i>
+                </button>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{:url('Index/index')}">
+                        <span class="icon fa fa-tachometer"></span><span class="title">报表统计</span>
+                    </a>
+                </li>
+                <li class="panel panel-default dropdown">
+                    <a href="{:url('Accounts/aliveAccounts')}">
+                        <span class="icon fa fa-tachometer"></span><span class="title">在线列表</span>
+                    </a>
+                </li>
+                <li class="panel panel-default dropdown">
+                    <a href="{:url('Accounts/AccountsList')}">
+                        <span class="icon fa fa-thumbs-o-up"></span><span class="title">账号列表</span>
+                    </a>
+                </li>
+                <li class="panel panel-default dropdown">
+                    <a href="{:url('Accounts/alreadyDel')}">
+                        <span class="icon fa fa-thumbs-o-up"></span><span class="title">已删账号</span>
+                    </a>
+                </li>
+                <li class="panel panel-default dropdown">
+                    <a href="{:url('Accounts/applySendScore')}">
+                        <span class="icon fa fa-thumbs-o-up"></span><span class="title">申请送分</span>
+                    </a>
+                </li>
+
+                <!-- Dropdown-->
+                <li class="panel panel-default dropdown">
+                    <a href="{:url('Accounts/operateRecord')}">
+                        <span class="icon fa fa-thumbs-o-up"></span><span class="title">操作记录</span>
+                    </a>
+                </li>
+                <!-- Dropdown-->
+                <li class="panel panel-default dropdown">
+                    <a href="" data-toggle="modal" data-target="#bank_message">
+                        <span class="icon fa fa-thumbs-o-up"></span><span class="title">商城信息</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+</div>
+<div class="modal fade" id="bank_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 74% ;">
+            <div class="modal-header" style="margin-bottom: -20px; padding-bottom: 1px;">
+                <button type="button" class="close" style="border: 10px solid transparent;" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    商城信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table style="border-collapse:separate;" class="table">
+                    <tr>
+                        <th width="22%">玩家账号：</th><th width="80%"><input type="text" class="form-control" style="width: 100%"></th>
+                    </tr>
+                    <tr>
+                        <th width="22%">账户余额：</th><th width="80%"><input type="text" class="form-control" style="width: 100%" disabled="disabled" value=""></th>
+                    </tr>
+                    <tr>
+                        <th width="22%">消费金额：</th><th width="80%"><input type="text" class="form-control xiaofeijine" style="width: 100%" value="0" onkeyup='this.value=this.value.replace(/\D/gi,"")'></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <button type="button" class="btn" onclick="add_money(50,'xiaofeijine')">50元</button><i class="class_i"></i>
+                            <button type="button" class="btn" onclick="add_money(100,'xiaofeijine')">100元</button><i class="class_i"></i>
+                            <button type="button" class="btn" onclick="add_money(500,'xiaofeijine')">500元</button><i class="class_i"></i>
+                            <button type="button" class="btn" onclick="add_money(1000,'xiaofeijine')">1000元</button><i class="class_i"></i>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <button type="button" class="btn btn-info shangfen">上分</button>
+                            <button type="button" class="btn btn-info xiafen">下分</button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+<style>
+    .class_i{margin-right: 15px;}
+    .shangfen{ width: 100px; float: left; margin-top: -20px;}
+    .xiafen{ width: 100px; float: right;margin-top: -20px;}
+</style>

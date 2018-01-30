@@ -1,0 +1,44 @@
+{include file="public/header_only_css"}
+<style>
+    .table_anniu_dialog th{ text-align:center; padding:10px;width: 50%; width: 250px; }
+    th{ text-align: center;}
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <div class="title">短信送设定</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table-bordered table_anniu_dialog">
+            <tr>
+                <th>是否开启短信送</th>
+                <th><input type="checkbox"></th>
+            </tr>
+            <tr>
+                <th>最多可设定个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>当前可用的个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>已经使用个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>设定短信送个数</th>
+                <th><input type="text" class="form-control"></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><button type="button" class="btn btn-info" style="margin-right: 10px;">确定</button><button type="button" class="btn btn-info">刷新</button></th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+{include file="public/footer_only_js"}

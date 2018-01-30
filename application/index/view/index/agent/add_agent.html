@@ -1,0 +1,67 @@
+{include file="public/header"}
+{include file="public/menu"}
+<div class="container-fluid">
+    <div class="side-body padding-top">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="title">新增代理</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="sub-title">账号</div>
+                                <div>
+                                    <input type="text" class="form-control agent_account" onblur="agent_lose_focus(this,'help-block')" placeholder="Text input" maxlength="16">
+                                    <p id="p1" class="help-block" style="display: none;">帐号名称(7-16位).</p>
+                                </div>
+                                <div class="sub-title">密码</div>
+                                <div>
+                                    <input type="password" class="form-control" placeholder="Text input"  onblur="miam_lose_focus(this,'mimayanzheng')" maxlength="16">
+                                    <p id="p2" class="mimayanzheng" style="display: none;">
+                                    密码最少6位,必须是数字和字母组合.字母须有大小写,不能有连续3位以上的数字.
+                                    </p>
+                                </div>
+                                <div class="sub-title">占陈比例</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">微信号</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">银行卡号</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">开户行信息</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">名字</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">电话</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">备注</div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title"></div>
+                                <div>
+                                    <button type="button" class="btn btn-info">确定</button>
+                                    <button type="button" class="btn ">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

@@ -1,0 +1,38 @@
+{include file="public/header"}
+{include file="public/menu"}
+<div class="container-fluid">
+    <div class="side-body padding-top">
+
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="title">申请送分设定</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="{:url('Accounts/applySendScore',['sure'=>1])}">
+                                <div class="sub-title">会员账号</div>
+                                <div>
+                                    <input type="text" name="account" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title">送多少分</div>
+                                <div>
+                                    <input type="text" name="score" class="form-control" placeholder="Text input">
+                                </div>
+                                <div class="sub-title"></div>
+                                <div>
+                                    <button type="submit" class="btn btn-info">确定</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div>
+{include file="public/footer"}

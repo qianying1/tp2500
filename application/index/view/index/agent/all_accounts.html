@@ -1,0 +1,140 @@
+{include file="public/header"}
+{include file="public/menu"}
+<link rel="stylesheet" href="__STATIC__/css/style_table.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container-fluid">
+    <div class="side-body padding-top">
+
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="title">代理总账</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" action="{:url('Agent/all_accounts',['sure'=>1])}">
+                                <div class="sub-title">开始日期</div>
+                                <div>
+                                    <input type="text" placeholder="开始日期" required="" name="start_time" class="form-control" id="countTimestart" onfocus="selecttime(1)" value="">
+                                </div>
+                                <div class="sub-title">结束日期</div>
+                                <div>
+                                    <input type="text" placeholder="结束日期" required="" name="end_time" class="form-control" id="countTimestart" onfocus="selecttime(1)" value="">
+
+                                </div>
+                                <div class="sub-title"></div>
+                                <div>
+                                    <button type="submit" class="btn btn-info">确定</button>
+                                </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+        <div id="container" >
+
+        </div>
+            <div  class="chaxun_data" style="display: {if condition='$sure eq 1'}block;{else}none;{/if}">
+            <table class="zebra">
+                <tbody>
+                <tr>
+                    <td>游戏数据:  <span class="label label-success radius">0.00</span></td>
+                    <td>对战抽水:  <span class="label label-danger radius">0.00</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;注册送:  <span class="label label-danger radius">0.00</span></td>
+                    <td>&nbsp;&nbsp;&nbsp;申请送:  <span class="label label-warning radius">0.00</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;平台送:  <span class="label label-success radius">0.00</span></td>
+                    <td>&nbsp;&nbsp;&nbsp;活动送:  <span class="label label-success radius">0.00</span></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="height: 40px;background-color: #00a0e9; border-radius: 5px; margin-top: 10px;">
+                <p style="font-size: 25px; color: white; line-height: 40px; margin-left: 5px; float: left;margin-right: 10px;">详细数据</p>
+                <span class="label label-primary radius" style="float: left;line-height: 25px; margin-top: 6px;margin-right: 4px;">总数据: 0.00</span>
+                <span class="label label-primary radius" style="float: left;line-height: 25px; margin-top: 6px;margin-right: 4px;">占成数据: 0.00</span>
+                <span class="label label-primary radius" style="float: left;line-height: 25px; margin-top: 6px;margin-right: 4px;">分成数据: 0.00</span>
+                <span class="label label-primary radius" style="float: left;line-height: 25px; margin-top: 6px;margin-right: 4px;">实际数据: 0.00</span>
+            </div>
+            <table class="zebra">
+                <thead>
+                <tr>
+                    <th width="5%">账号</th>
+                    <th width="10%">占成比例</th>
+                    <th width="10%">游戏数据</th>
+                    <th width="10%">对战数据</th>
+                    <th width="15%">对战抽水</th>
+                    <th width="10%">注册送</th>
+                    <th width="10%">申请送</th>
+                    <th width="10%">平台送</th>
+                    <th width="10%">活动送</th>
+                    <th width="10%">代理数据</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+
+                </tbody>
+            </table>
+            </div>
+    </div>
+    </div>
+</div>
+{include file="public/footer"}
+<script src="__STATIC__/hui/lib/My97DatePicker/WdatePicker.js"></script>

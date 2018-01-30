@@ -1,0 +1,134 @@
+{include file="public/header"}
+{include file="public/menu"}
+<link rel="stylesheet" href="__STATIC__/css/style_table.css" type="text/css">
+
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    .search_box{ width:300px; margin-bottom: 5px; float:right; }
+    .search_button{ margin-bottom: 5px; float:right;}
+    .ceil_nav{margin-bottom: 5px; float: left; }
+    .ceil_nav li a{color: #0c0c0c;}
+    .ceil{margin-bottom: 5px;}
+</style>
+<style>
+    .ceil ul
+    {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+    .ceil li
+    {
+        float:left;
+    }
+    .ceil a:link,a:visited
+    {
+        display:block;
+        width:100px;
+
+        color:#fff;
+
+        text-align:center;
+        padding:4px;
+        text-decoration:none;
+        text-transform:uppercase;
+    }
+    .ceil a:hover,a:active
+    {
+        background-color:#2b2b2b;color: white;
+    }
+    .ceil_left{ width: 56.6%; float: left; background-color: #00a0e9; }
+    .ceil_right{ width: 40%; float: right;}
+    .agent_name a:hover{ background-color: #00a0e9;color:black;}
+</style>
+<div class="container-fluid">
+    <div class="side-body padding-top">
+
+<div id="container">
+
+</div>
+    <div class="ceil_left">
+        <div class="ceil">
+            <ul class="ceil_nav">
+                <li class="agent_name"><a href="">{$admin}-代理</a></li>
+                <li><a href="{:url('Agent/add_agent')}">新增代理</a></li>
+                <li><a href="{:url('Agent/add_tuiguanhao')}">新增推广号</a></li>
+                <li><a href="{:url('Agent/all_accounts',['sure'=>0])}">代理总账</a></li>
+                <li><a href="{:url('Agent/up_down_accounts')}">上下分总账</a></li>
+                <li><a href="#">刷新代理列表</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ceil_right">
+        <div class="ceil">
+            <button type="button" class="btn btn_sm search_button">搜索</button>
+        </div>
+        <div class="ceil">
+            <input type="text" class="form-control search_box" id="name" placeholder="请输入名称">
+        </div>
+    </div>
+    <table class="zebra">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>账号</th>
+            <th>是否推广号</th>
+            <th>占成比例%</th>
+            <th>操作</th>
+            <th>备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>10:00</td>
+            <td><span class="label label-success radius">yes</span></td>
+            <td>10:00</td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="member_edit('编辑','{:url('Accounts/gongnengsheding',['id'=>1])}','500','260')">功能设定</button>
+                <button type="button" class="btn btn-info" onclick="member_edit('编辑','{:url('Accounts/zhucesongsheding',['id'=>1])}','500','484')">注册送设定</button>
+                <button type="button" class="btn btn-info" onclick="member_edit('编辑','{:url('Accounts/duanxinsongsheding',['id'=>1])}','500','450')">短信送设定</button>
+                <button type="button" class="btn btn-warning" onclick="member_edit('编辑','{:url('Accounts/tongji',['id'=>1])}','500','260')">统计</button>
+                <a href="{:url('Accounts/chazhang',['sure'=>0])}"><button type="button" class="btn btn-warning">查账</button></a>
+                <a href="{:url('Accounts/quxian')}"><button type="button" class="btn btn-warning">曲线</button></a>
+                <button type="button" class="btn btn-warning" onclick="member_del('{:url('user/deleteUser',['id'=>1,'status'=>-1])}')">禁用</button>
+                <button type="button" class="btn btn-warning" onclick="member_edit('编辑','{:url('Accounts/xiugaimima',['id'=>1])}','500','260')">修改密码</button>
+            </td>
+            <td><button type="button" class="btn" onclick="member_edit('编辑','{:url('Accounts/tableedit',['id'=>1])}','500','250')">N/A</button></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    模态框（Modal）标题
+                </h4>
+            </div>
+            <div class="modal-body">
+                在这里添加一些文本
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.js"></script>
+{include file="public/footer"}

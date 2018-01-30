@@ -1,0 +1,48 @@
+{include file="public/header_only_css"}
+<style>
+    .table_anniu_dialog th{padding:10px;width: 50%; width: 250px;}
+    th{ text-align: center;}
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <div class="title">注册送设定</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table-bordered table_anniu_dialog">
+            <tr>
+                <th>是否开启注册送</th>
+                <th><input type="checkbox"></th>
+            </tr>
+            <tr>
+                <th>注册是的送分值</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>最多可设定个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>当前注册个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>已经送出个数</th>
+                <th><span class="label label-success radius">12</span></th>
+            </tr>
+            <tr>
+                <th>设定注册送个数</th>
+                <th><input type="text" class="form-control"></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><button type="button" class="btn btn-info" style="margin-right: 10px;">确定</button><button type="button" class="btn btn-info">刷新</button></th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+{include file="public/footer_only_js"}
