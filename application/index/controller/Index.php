@@ -5,6 +5,19 @@ use think\Controller;
 
 class Index extends Controller
 {
+    /**
+     * 通讯套接字
+     *
+     * @var SocketInitializationUtils
+     */
+    private $sorket;
+
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $this->sorket = new SocketInitializationUtils();
+    }
+
     public function index()
     {
         if(isset($_COOKIE['admin'])){
@@ -23,11 +36,18 @@ class Index extends Controller
     public function login(){
         return $this->fetch('index/login');
     }
-    //检查登录
+
+    /**
+     * 登录验证
+     */
     public function loginCheck(){
-        $data = file_get_contents('index.txt');
-        $arr = explode('&@#',$data);
+        /*$data = file_get_contents('index.txt');
+        $arr = explode('&@#',$data);*/
+        $this->sorket->code = 11;
         $input = input('post.');
+        $data[0] = $input['Username'];
+        $data[1]=$input['Password'];
+        $this->sorket->write($data);
         if($arr[0]!=$input['Username'] || $arr[1]!=$input['Password']){
             $this->error('登录失败',url('Index/login'));
         }else{
