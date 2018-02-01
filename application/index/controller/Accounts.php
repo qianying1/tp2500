@@ -1,18 +1,12 @@
 <?php
 namespace app\index\controller;
-use app\index\utils\SocketInitializationUtils;
 use think\Request;
+//use app\index\utils\SocketInitializationUtils;
 
 class Accounts extends Base
 {
 
     private $sorket;
-
-    public function __construct(Request $request = null)
-    {
-        parent::__construct($request);
-        $this->sorket = new SocketInitializationUtils();
-    }
 
     //账号列表
     public function AccountsList()

@@ -6,16 +6,17 @@
  * Time: 21:38
  */
 
-namespace app\index\utils;
+namespace app\index\common;
 
 
-class SocketInitializationUtils
+class SocketCommunicationUtils
 {
     private $socket;
     private $port = 56200;
     private $host = '39.108.219.90';
     private $byte;
     private $code;
+
     const CODE_LENGTH = 2;
     const FLAG_LENGTH = 4;
 
@@ -28,7 +29,7 @@ class SocketInitializationUtils
     {
         $this->host = $host;
         $this->port = $port;
-        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        $this->setSocket(socket_create(AF_INET, SOCK_STREAM, SOL_TCP));
         if (!$this->socket) {
             exit('创建socket失败');
         }
@@ -51,7 +52,7 @@ class SocketInitializationUtils
             }
         }
         $this->setPrev();
-        $this->send();
+        return $this->send();
     }
 
     /*
@@ -84,13 +85,86 @@ class SocketInitializationUtils
     private function send()
     {
         $result = socket_write($this->socket, $this->byte->getByte());
-        if (!$result) {
-            exit('发送信息失败');
+        return $result;
+    }
+
+    public function readData($socket){
+        var_dump($socket);
+        while ($buffer = socket_read($socket, 1024, PHP_NORMAL_READ)) {
+            if (preg_match("/not connect/",$buffer)) {
+                echo "don`t connect\n";
+                break;
+            } else {
+                //服务端传来的信息
+                /*echo "Buffer Data: " . $buffer . "\n";
+                echo "Writing to Socket\n";*/
+                //服务器端收到信息后，客户端接收服务端传给客户端的回应信息。
+                while ($buffer = socket_read($this->socket, 1024, PHP_NORMAL_READ)) {
+                    var_dump("response from server was:" . $buffer . "\n");
+                }
+
+            }
         }
+    }
+
+    /**
+     * @return resource
+     */
+    public function getSocket()
+    {
+        return $this->socket;
+    }
+
+    /**
+     * @param resource $socket
+     */
+    public function setSocket($socket)
+    {
+        $this->socket = $socket;
     }
 
     public function __desctruct()
     {
         socket_close($this->socket);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort()
+    {
+        return $this->port;
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort($port)
+    {
+        $this->port = $port;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * @param string $host
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
     }
 }

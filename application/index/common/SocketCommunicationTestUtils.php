@@ -6,7 +6,7 @@
  * Time: 21:39
  */
 
-namespace app\index\utils;
+namespace app\index\common;
 
 class SocketCommunicationTestUtils
 {
