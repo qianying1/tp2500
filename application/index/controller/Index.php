@@ -17,10 +17,13 @@ class Index extends Controller
     {
         $this->sorket = new SocketCommunicationUtils();
         $this->sorket->code = 11;
+        $login="admin111111";
         $input = input('post.');
-        $data[0] = pack()"@";
-        $data[0] = "admin";
-        $data[1] = "111111";
+        $data= pack("s","@");
+        $data.=pack("v","11");
+        $data.=pack("s",strlen($login));
+        $data.=pack("c","admin");
+        $data.=pack("c","111111");
         $result = $this->sorket->write($data);
         if (!$result) {
             exit('发送信息失败');

@@ -79,7 +79,7 @@ class SocketCommunicationUtils
 
     private function setPrev()
     {
-        $this->byte->setBytePrev($this->getHeader() . $this->getCode() . $this->getFlag());
+        $this->byte->setBytePrev($this->getHeader().$this->getCode().$this->getFlag());
     }
 
     private function send()
@@ -88,10 +88,11 @@ class SocketCommunicationUtils
         return $result;
     }
 
-    public function readData($socket){
+    public function readData($socket)
+    {
         var_dump($socket);
         while ($buffer = socket_read($socket, 1024, PHP_NORMAL_READ)) {
-            if (preg_match("/not connect/",$buffer)) {
+            if (preg_match("/not connect/", $buffer)) {
                 echo "don`t connect\n";
                 break;
             } else {
