@@ -1,4 +1,5 @@
 <?php
+
 namespace app\index\controller;
 
 use app\index\common\SocketCommunicationUtils;
@@ -17,14 +18,19 @@ class Index extends Controller
     {
         $this->sorket = new SocketCommunicationUtils();
         $this->sorket->code = 11;
-        $login="admin111111";
+        $login = "admin111111";
         $input = input('post.');
-        $data= pack("s","@");
-        $data.=pack("v","11");
-        $data.=pack("s",strlen($login));
-        $data.=pack("c","admin");
-        $data.=pack("c","111111");
-        $result = $this->sorket->write($data);
+        $data[0] = "@";
+        $length[0] = 2;
+        $data[1] = "11";
+        $length[1] = 2;
+        $data[2] = strlen($login);
+        $length[2] = 2;
+        $data[3] = "admin";
+        $length[3] = 6;
+        $data[4] = "111111";
+        $length[4] = 6;
+        $result = $this->sorket->writeBinaryData($data,$length);
         if (!$result) {
             exit('发送信息失败');
         } else {

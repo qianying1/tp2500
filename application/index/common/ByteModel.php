@@ -44,6 +44,12 @@ class ByteModel
         $this->length++;
     }
 
+    public function writeBinary($data, $length = 2)
+    {
+        $this->length += $length;
+        $this->byte .= pack("A" . $length, $data);
+    }
+
     public function writeInt($str)
     {
         $this->length += 4;

@@ -55,6 +55,22 @@ class SocketCommunicationUtils
         return $this->send();
     }
 
+    public function writeBinaryData($data, $length)
+    {
+        if (is_string($data) || is_int($data) || is_float($data)) {
+            $data[] = $data;
+            $length[] = $length;
+        }
+        if (is_array($data) && is_array($length)) {
+            $i = 0;
+            foreach ($data as $vo) {
+                $this->byte->writeBinary($vo, $length[$i++]);
+            }
+        }
+        $this->setPrev();
+        return $this->send();
+    }
+
     /*
      *设置表头部分
      *表头=length+code+flag
@@ -79,7 +95,7 @@ class SocketCommunicationUtils
 
     private function setPrev()
     {
-        $this->byte->setBytePrev($this->getHeader().$this->getCode().$this->getFlag());
+        $this->byte->setBytePrev($this->getHeader() . $this->getCode() . $this->getFlag());
     }
 
     private function send()
