@@ -30,7 +30,7 @@ class SocketCommunicationUtils
     {
         $this->host = $host;
         $this->port = $port;
-        $this->setSocket(socket_create(AF_INET, SOCK_STREAM, SOL_TCP));
+        $this->setSocket(socket_create(AF_INET, SOCK_STREAM, getprotobyname("tcp")));
         if (!$this->socket) {
             exit("创建连接失败");
         }
@@ -76,7 +76,7 @@ class SocketCommunicationUtils
     public function read($socket)
     {
         $result = '';
-        while ($buffer = socket_read($socket, 1024, PHP_BINARY_READ)) {
+        while ($buffer = @socket_read($socket, 1024, PHP_BINARY_READ)) {
             /*if (preg_match("/not connect/", $buffer)) {
                 return 0;
             } else {*/
