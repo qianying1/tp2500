@@ -12,29 +12,20 @@ class Index extends Controller
      *
      * @var SocketInitializationUtils
      */
-    private $sorket;
+    private $communicationUtil;
+
+    private $usernameTest="Super";
+    private $passwordTest="123456";
 
     public function index()
     {
-        $this->sorket = new SocketCommunicationUtils();
-        $this->sorket->code = 11;
-        $login = "admin111111";
+        $this->communicationUtil = new SocketCommunicationUtils();
         $input = input('post.');
-        $data[0] = "@";
-        $length[0] = 2;
-        $data[1] = "11";
-        $length[1] = 2;
-        $data[2] = strlen($login);
-        $length[2] = 2;
-        $data[3] = "admin";
-        $length[3] = 6;
-        $data[4] = "111111";
-        $length[4] = 6;
-        $result = $this->sorket->writeBinaryData($data,$length);
+        $result = $this->communicationUtil->write("11", 24, pack("a12a12", $this->usernameTest,$this->passwordTest));
         if (!$result) {
-            exit('发送信息失败');
+//            $this->error('远程通讯失败', url('index/login'));
         } else {
-            $this->sorket->readData($this->sorket->getSocket());
+            $this->communicationUtil->read($this->communicationUtil->getSocket());
         }
         /*if(isset($_COOKIE['admin'])){
             $sure = input('sure',0,'intval');
