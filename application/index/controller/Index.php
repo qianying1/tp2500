@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\index\common\ReadModel;
 use app\index\common\SocketCommunicationUtils;
 use think\Controller;
 
@@ -14,19 +15,38 @@ class Index extends Controller
      */
     private $communicationUtil;
 
-    private $usernameTest="Super";
-    private $passwordTest="123456";
+    private $usernameTest = "Super";
+    private $passwordTest = "123456";
 
     public function index()
     {
         $this->communicationUtil = new SocketCommunicationUtils();
         $input = input('post.');
-        $result = $this->communicationUtil->write("11", 24, pack("a12a12", $this->usernameTest,$this->passwordTest));
+        $readData = '';
+        $result = $this->communicationUtil->write("11", 24, pack("a12a12", $this->usernameTest, $this->passwordTest));
         if (!$result) {
 //            $this->error('远程通讯失败', url('index/login'));
         } else {
-            $this->communicationUtil->read($this->communicationUtil->getSocket());
+            $readData = $this->communicationUtil->read($this->communicationUtil->getSocket());
         }
+        echo 'response: ' . $readData.'<br/>';
+        $readModel = new ReadModel();
+        $readModel->setId(substr($readData, 1, 2));
+        $readModel->setData(unpack("a", substr($readData, 3, strlen($readData) - 3)));
+        echo '<br/>';
+        $id=$readModel->getId();
+        $data=$readModel->getData();
+        var_dump($id);
+        echo '<br/>';
+        var_dump(unpack("h2", substr($readData, 3, 1)));
+        echo '<br/>';
+        var_dump(unpack("h2", substr($readData, 4, 1)));
+        echo '<br/>';
+        var_dump(unpack("h2", substr($readData, 5, 1)));
+        echo '<br/>';
+        var_dump($data);
+        echo '<br/>';
+        echo 'data: ' ;
         /*if(isset($_COOKIE['admin'])){
             $sure = input('sure',0,'intval');
             if($sure==1) {

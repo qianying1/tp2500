@@ -56,15 +56,11 @@ class SocketCommunicationUtils
     {
         $tcpData = bin2hex($this->writeModel->getWriteData());
         $tcpDatas = str_split(str_replace(' ', '', $tcpData), 2);// 将16进制数据转换成两个一组的数组
-        try {
-            for ($j = 0; $j < count($tcpDatas); $j++) {
-                echo 'tcpData' . $j . ' ' . $tcpDatas[$j] . '<br/>';
-                socket_write($this->socket, chr(hexdec($tcpDatas[$j])));  // 逐组数据发送
-            }
-        } catch (Exception $e) {
-            return 0;
+        for ($j = 0; $j < count($tcpDatas); $j++) {
+            echo 'tcpData' . $j . ' ' . $tcpDatas[$j] . '<br/>';
+            socket_write($this->socket, chr(hexdec($tcpDatas[$j])));  // 逐组数据发送
         }
-        return 1;
+        return true;
 //        $result = socket_write($this->socket, $this->writeModel->getWriteData());
 //        return $result;
     }
@@ -75,16 +71,7 @@ class SocketCommunicationUtils
      */
     public function read($socket)
     {
-        $result = '';
-        while ($buffer = @socket_read($socket, 1024, PHP_BINARY_READ)) {
-            /*if (preg_match("/not connect/", $buffer)) {
-                return 0;
-            } else {*/
-                //服务器端收到信息后，客户端接收服务端传给客户端的回应信息。
-                $result .= $buffer;
-//            }
-        }
-        return $result;
+        return @socket_read($socket, 1024, PHP_BINARY_READ);
     }
 
     /**
